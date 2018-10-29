@@ -7,8 +7,10 @@ import { EXIF } from 'exif-js';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-lat: any;
-lon: any;
+
+ImageCapturedLatitude: any;
+ImageCapturedLongitude: any;
+imageCapturedDate:Date;
 
   @ViewChild("video")
     public video: ElementRef;
@@ -37,33 +39,23 @@ lon: any;
   }
 
   public capture() {
-     console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+     
       var context = this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 640, 480);
       console.log("################",this.canvas.nativeElement.toDataURL("image/png"));
       this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
       
-	      if(navigator.geolocation){
+	 if(navigator.geolocation){
 	     navigator.geolocation.getCurrentPosition((position) => { 
 	  console.log("Got position", position.coords);
-	  console.log("date:######################",new Date());
-	  this.lat = position.coords.latitude; 
-	  this.lon = position.coords.longitude;
+	  this.ImageCapturedLatitude = position.coords.latitude; 
+      this.ImageCapturedLongitude = position.coords.longitude;
+      this.imageCapturedDate = new Date();
 	});
-          }
-      
-      
-  }
+ }
+}
   
-  executeThis(){
-  console.log("@@@@@@executeThis called...###########");
+  loadCapturedImage(){
   
- // var img1 = document.getElementById("img1");
-   // EXIF.getData(img1, function() {
-       // var make = EXIF.getTag(this, "Make");
-        //var model = EXIF.getTag(this, "Model");
-        //var makeAndModel = document.getElementById("makeAndModel");
-        //makeAndModel.innerHTML = `${make} ${model}`;
-   // });
    console.log("checkpoint#################################################",this.captures[0]);
     var img2 = this.captures[0];
     console.log("$$$",img2);

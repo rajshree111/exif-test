@@ -6,7 +6,7 @@
   <canvas #canvas id="canvas" width="640" height="480"></canvas>
   <ul>
       <li *ngFor="let c of captures">
-          <img src="{{ c }}" height="50" (load)="executeThis()">
+          <img src="{{ c }}" height="50" (load)="loadCapturedImage()">
       </li>
   </ul>
 </div>

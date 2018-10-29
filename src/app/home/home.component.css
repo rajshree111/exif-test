@@ -1,0 +1,15 @@
+img {
+    max-width: 500px;
+     max-height: 200px; 
+  }
+
+  #allMetaDataSpan {
+  word-wrap: break-word;
+  }
+  
+
+
+@media (min-width: 521px) {
+
+
+}

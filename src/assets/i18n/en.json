@@ -1,10 +1,10 @@
 {
     
     "Menu": {
-      "home": "Home",
+      "home": "Exif-test",
       "contact": "Contact Us",
       "client": "client",
-      "service":"services",
+      "service":"rear-camera",
       "login":"Log in"
     }
   }
