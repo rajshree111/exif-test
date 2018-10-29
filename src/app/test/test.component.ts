@@ -50,6 +50,8 @@ imageCapturedDate:Date;
 	  this.ImageCapturedLatitude = position.coords.latitude; 
       this.ImageCapturedLongitude = position.coords.longitude;
       this.imageCapturedDate = new Date();
+      var allMetaDataSpan = document.getElementById("allMetaDataSpan");
+        allMetaDataSpan.innerHTML = " "+this.ImageCapturedLatitude +"\t "+this.ImageCapturedLongitude+" \n"+this.imageCapturedDate;
 	});
  }
 }
