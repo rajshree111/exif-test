@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { EXIF } from 'exif-js';
 
 @Component({
@@ -10,7 +11,7 @@ export class TestComponent implements OnInit {
 
 ImageCapturedLatitude: any;
 ImageCapturedLongitude: any;
-imageCapturedDate:Date;
+imageCapturedDate:string;
 
   @ViewChild("video")
     public video: ElementRef;
@@ -20,7 +21,7 @@ imageCapturedDate:Date;
 
     public captures: Array<any>;
 
-    public constructor() {
+    public constructor(private datePipe:DatePipe) {
         this.captures = [];
     }
 
@@ -49,7 +50,9 @@ imageCapturedDate:Date;
 	  console.log("Got position", position.coords);
 	  this.ImageCapturedLatitude = position.coords.latitude; 
       this.ImageCapturedLongitude = position.coords.longitude;
-      this.imageCapturedDate = new Date();
+      this.imageCapturedDate = this.datePipe.transform(new Date(),"yyyy-MM-dd HH:mm:SS");
+      console.log("before transform.................................");
+      //console.log(this.datePipe.transform(this.imageCapturedDate,"yyyy-MM-dd HH:mm:SS")); 
       var allMetaDataSpan = document.getElementById("allMetaDataSpan");
         allMetaDataSpan.innerHTML = " "+this.ImageCapturedLatitude +"\t "+this.ImageCapturedLongitude+" \n"+this.imageCapturedDate;
 	});

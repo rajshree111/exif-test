@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../auth.service';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {TranslateService} from '@ngx-translate/core';
-
-import {User} from '../core/user';
 import * as firebase from 'firebase/app';
-import { LoginComponent } from '../core/login/login.component';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   selected = 'en';
 
-  constructor(private afs: AngularFirestore , public authService: AuthService, private logincom: LoginComponent, public translate: TranslateService) {
+  constructor(private afs: AngularFirestore , public translate: TranslateService) {
     translate.addLangs(["en", "hn"]);
     translate.setDefaultLang('en');
     translate.use(this.selected)
@@ -27,20 +23,13 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.authService.currentMessage.subscribe(value => {
-
-      this.isLoggedIn = value;
-
-      console.log('***************************' + this.isLoggedIn);
-
-    });
 
     //console.log("#####################################"+this.afs.doc<User>(`users/${this.logincom.thisUser.uid}`).valueChanges());
 
   }
 
   logout() {
-    this.authService.logout();
+    
   }
 
   doSomething($event){

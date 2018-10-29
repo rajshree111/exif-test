@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
-import {AuthService} from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import {AuthService} from './auth.service';
 export class AppComponent implements OnDestroy {
   title = 'app';
 
-  constructor(private auth: AuthService){
+  constructor(){
 
   }
   ngOnDestroy() {
