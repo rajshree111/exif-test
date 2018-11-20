@@ -42,7 +42,7 @@ this.custHistArrayObj=this.custHistArrayObj.filter(obj=>
   {
     obj['newala']="blah blah blah"
     // console.log(new Date(obj.creationTime).setHours(0,0,0,0).getFullYear());
-    console.log(new Date(obj.creationTime).getDay());
+    console.log('-----------------------------',new Date(obj.creationTime).getDay());
     this.arrayCreationTime.push(new Date(obj.creationTime).setHours(0,0,0,0));
     return obj;
   });
