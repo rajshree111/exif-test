@@ -38,14 +38,16 @@ console.log('???????????',d.getDate(),d.getDay(),d.getFullYear());
 
 
 
-this.custHistArrayObj.filter(obj=>
+this.custHistArrayObj=this.custHistArrayObj.filter(obj=>
   {
+    obj['newala']="blah blah blah"
     // console.log(new Date(obj.creationTime).setHours(0,0,0,0).getFullYear());
     console.log(new Date(obj.creationTime).getDay());
     this.arrayCreationTime.push(new Date(obj.creationTime).setHours(0,0,0,0));
+    return obj;
   });
 
-  
+  console.log("..............................",this.custHistArrayObj);
   console.log('@@@@@',this.arrayCreationTime);
    var item= Array.from(new Set(this.arrayCreationTime));
    item=item.filter(arr=>{
