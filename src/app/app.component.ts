@@ -11,6 +11,7 @@ export class AppComponent implements OnInit,OnDestroy {
 
   custHistArrayObj = [];
   arrayCreationTime =[];
+  uniqueItems =[];
 
   constructor(){ }
 
@@ -39,13 +40,19 @@ console.log('???????????',d.getDate(),d.getDay(),d.getFullYear());
 
 this.custHistArrayObj.filter(obj=>
   {
-    this.arrayCreationTime.push(obj.creationTime);
+    this.arrayCreationTime.push(new Date(obj.creationTime).setHours(0,0,0,0));
   });
 
-  console.log('@@@@@',new Date(this.arrayCreationTime[0]));
-
+  
+  console.log('@@@@@',this.arrayCreationTime);
+   var item= Array.from(new Set(this.arrayCreationTime));
+   item.filter(arr=>{
+     return arr.toLocaleString('en-US');
+   });
+  console.log('uniqueItems...',item); // show UI for these many items
+//https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
   let currentdate = new Date();
-  currentdate.setHours(0);
+  currentdate.setHours(0,0,0,0);
   if(new Date(this.arrayCreationTime[0])>=currentdate){
     console.log("today.....................................");
   }
