@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {TranslateService} from '@ngx-translate/core';
 import * as firebase from 'firebase/app';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-header',
