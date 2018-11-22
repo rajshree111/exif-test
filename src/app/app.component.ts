@@ -11,7 +11,9 @@ export class AppComponent implements OnInit,OnDestroy {
   filterStatus: Boolean = false;
 
   arraayObj = [];
-  filterArraayObj =[];
+  arraayObjKey = Object.keys(this.arraayObj);
+  filterArraayObj ={};
+  filterArraayObjKey = Object.keys(this.filterArraayObj);
   arrayCreationTime =[];
   uniqueItems =[];
 
@@ -81,13 +83,20 @@ filter(){
 
 selectable(item){
   if(item=='first'){
-this.filterArraayObj.push(this.arraayObj[0]);
+//this.filterArraayObj.push(this.arraayObj[0]);
+this.filterArraayObj[(this.arraayObj[0].creationTime)] ='value';
+this.filterArraayObjKey = Object.keys(this.filterArraayObj);
+this.filterArraayObjKey.sort((d1,d2)=>
+new Date(d2).getTime()-new Date(d1).getTime()
+);
+ 
   }else{
-    this.filterArraayObj.push(this.arraayObj[1])
+    this.filterArraayObj[(this.arraayObj[1].creationTime)] = 'jjjjj';
+    this.filterArraayObjKey = Object.keys(this.filterArraayObj);
   }
 
-  this.filterArraayObj.sort(((d1,d2)=>{
-    return (new Date(d2.creationTime).getTime() - new Date(d1.creationTime).getTime());
+  this.filterArraayObjKey.sort(((d1,d2)=>{
+    return (new Date(d2).getTime() - new Date(d1).getTime());
   }))
 }
   
