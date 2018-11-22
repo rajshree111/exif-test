@@ -1,7 +1,13 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 <!-- <router-outlet></router-outlet> -->
+<button class="filter" (click)="filter()">filter</button>
 
-<div *ngFor="let item of uniqueItems">
-{{item}}
+<div *ngIf="filterStatus">
+    <button (click)="selectable('first')">first</button>
+    <button (click)="selectable('second')">second</button>
+</div>
+
+<div *ngFor="let item of (!filterStatus ? arraayObj:filterArraayObj)">
+{{item.creationTime}}
 </div>
 

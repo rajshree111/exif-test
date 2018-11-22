@@ -8,15 +8,17 @@ import * as moment from 'moment';
 })
 export class AppComponent implements OnInit,OnDestroy {
   title = 'app';
+  filterStatus: Boolean = false;
 
-  custHistArrayObj = [];
+  arraayObj = [];
+  filterArraayObj =[];
   arrayCreationTime =[];
   uniqueItems =[];
 
   constructor(){ }
 
 ngOnInit() {
-this.custHistArrayObj= [{
+this.arraayObj= [{
   "creationTime": "2018-11-21T00:00:00Z"
 },
 {
@@ -29,16 +31,20 @@ this.custHistArrayObj= [{
   "creationTime": "2018-11-14T16:00:26Z"
 },
 {
-  "creationTime": "2018-11-14T16:00:26Z"
+  "creationTime": "2018-11-20T16:00:26Z"
 }
 ];
+
+this.arraayObj.sort((d1,d2)=>{
+  return (new Date(d2.creationTime).getTime() - new Date(d1.creationTime).getTime());
+});
 
 var d = new Date("2015-03-25T12:00:00Z");
 console.log('???????????',d.getDate(),d.getDay(),d.getFullYear());
 
 
 
-this.custHistArrayObj=this.custHistArrayObj.filter(obj=>
+this.arraayObj=this.arraayObj.filter(obj=>
   {
     obj['newala']="blah blah blah"
     // console.log(new Date(obj.creationTime).setHours(0,0,0,0).getFullYear());
@@ -47,7 +53,7 @@ this.custHistArrayObj=this.custHistArrayObj.filter(obj=>
     return obj;
   });
 
-  console.log("..............................",this.custHistArrayObj);
+  console.log("..............................",this.arraayObj);
   console.log('@@@@@',this.arrayCreationTime);
    var item= Array.from(new Set(this.arrayCreationTime));
    item=item.filter(arr=>{
@@ -62,8 +68,27 @@ this.custHistArrayObj=this.custHistArrayObj.filter(obj=>
     console.log("today.....................................");
   }
 
-  
+}
 
+filter(){
+  this.filterStatus = ! this.filterStatus;
+
+  if(!this.filterStatus){
+    this.filterArraayObj =[];
+  }
+}
+
+
+selectable(item){
+  if(item=='first'){
+this.filterArraayObj.push(this.arraayObj[0]);
+  }else{
+    this.filterArraayObj.push(this.arraayObj[1])
+  }
+
+  this.filterArraayObj.sort(((d1,d2)=>{
+    return (new Date(d2.creationTime).getTime() - new Date(d1.creationTime).getTime());
+  }))
 }
   
   ngOnDestroy() {
