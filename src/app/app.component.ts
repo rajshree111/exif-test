@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import * as moment from 'moment';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,43 +8,41 @@ import * as moment from 'moment';
 export class AppComponent implements OnInit,OnDestroy {
   title = 'app';
   filterStatus: Boolean = false;
-
   arraayObj = [];
   arraayObjKey = Object.keys(this.arraayObj);
   filterArraayObj ={};
   filterArraayObjKey = Object.keys(this.filterArraayObj);
   arrayCreationTime =[];
   uniqueItems =[];
-
   constructor(){ }
-
 ngOnInit() {
 this.arraayObj= [{
-  "creationTime": "2018-11-21T00:00:00Z"
+  "name":"case history",
+  "creationTime": "2018-11-21T11:00:00Z"
 },
 {
-  "creationTime": "2018-11-20T10:00:26Z"
+  "name":"order history",
+  "creationTime": "2018-11-21T10:00:26Z"
 },
 {
+  "name":"case history",
   "creationTime": "2018-11-14T16:00:26Z"
 },
 {
+  "name":"case history",
   "creationTime": "2018-11-14T16:00:26Z"
 },
 {
+  "name":"case history",
   "creationTime": "2018-11-20T16:00:26Z"
 }
 ];
-
 this.arraayObj.sort((d1,d2)=>{
   return (new Date(d2.creationTime).getTime() - new Date(d1.creationTime).getTime());
 });
 
 var d = new Date("2015-03-25T12:00:00Z");
 console.log('???????????',d.getDate(),d.getDay(),d.getFullYear());
-
-
-
 this.arraayObj=this.arraayObj.filter(obj=>
   {
     obj['newala']="blah blah blah"
@@ -54,7 +51,6 @@ this.arraayObj=this.arraayObj.filter(obj=>
     this.arrayCreationTime.push(new Date(obj.creationTime).setHours(0,0,0,0));
     return obj;
   });
-
   console.log("..............................",this.arraayObj);
   console.log('@@@@@',this.arrayCreationTime);
    var item= Array.from(new Set(this.arrayCreationTime));
@@ -69,9 +65,7 @@ this.arraayObj=this.arraayObj.filter(obj=>
   if(new Date(this.arrayCreationTime[0])>=currentdate){
     console.log("today.....................................");
   }
-
 }
-
 filter(){
   this.filterStatus = ! this.filterStatus;
 
@@ -79,8 +73,6 @@ filter(){
     this.filterArraayObj =[];
   }
 }
-
-
 selectable(item){
   if(item=='first'){
 //this.filterArraayObj.push(this.arraayObj[0]);
@@ -99,8 +91,6 @@ new Date(d2).getTime()-new Date(d1).getTime()
     return (new Date(d2).getTime() - new Date(d1).getTime());
   }))
 }
-  
-  ngOnDestroy() {
-      
+  ngOnDestroy() {    
   }
 }
