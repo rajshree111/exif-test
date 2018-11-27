@@ -6,6 +6,7 @@ import * as moment from 'moment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit,OnDestroy {
+  count =2;
   title = 'app';
   filterStatus: Boolean = false;
   arraayObj = [];

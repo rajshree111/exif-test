@@ -24,6 +24,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TestComponent } from './test/test.component';
+import { TruncatePipe } from './truncate.service';
+
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyA8y7brDTBunobigfd4xQWYcYHj-vUwCCM',
@@ -43,7 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-  
+    TruncatePipe,
     HeaderComponent,
     HomeComponent,
 

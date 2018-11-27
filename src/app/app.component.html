@@ -7,8 +7,8 @@
     <button (click)="selectable('second')">second</button>
 </div>
 
-<div *ngFor="let item of (!filterStatus ? arraayObj:filterArraayObjKey)">
-{{item.name }}  
+<div *ngFor="let item of (!filterStatus ? (arraayObj | limitTo : count):filterArraayObjKey)">
+{{item}}  
 {{item.creationTime | date }}
 </div>
 
